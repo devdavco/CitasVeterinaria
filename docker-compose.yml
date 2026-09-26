@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: citasvet-postgres
+    environment:
+      POSTGRES_DB: citasvet_db
+      POSTGRES_USER: citasvet
+      POSTGRES_PASSWORD: citasvet123
+    ports:
+      - "5433:5432"
+    volumes:
+      - citasvet_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  citasvet_data:

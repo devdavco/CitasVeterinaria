@@ -1,10 +1,10 @@
-package com.turnovet.turnovet;
+package com.citasvet.citasvet;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TurnovetApplicationTests {
+class CitasvetApplicationTests {
 
 	@Test
 	void contextLoads() {
