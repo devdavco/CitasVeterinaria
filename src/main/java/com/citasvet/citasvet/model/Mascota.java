@@ -26,12 +26,15 @@ public class Mascota {
 
     @Column(nullable = false)
     private String nombre;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Especie especie;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
+
     private String raza;
     private LocalDate fechaNacimiento;
 
