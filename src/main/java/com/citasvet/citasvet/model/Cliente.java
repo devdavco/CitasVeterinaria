@@ -1,7 +1,34 @@
 package com.citasvet.citasvet.model;
 
-public class Cliente {
-    private int id;
-    private String name;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "clientes")
+@Getter
+@Setter
+@NoArgsConstructor
+public class Cliente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String documento;
+
+    @Column(nullable = false)
+    private String nombre;
+    @Column(nullable = false)
+    private String apellido;
+
+    private LocalDate fechaRegistro;
+    private LocalDate fechaNacimiento;
+    @Column(nullable = false)
+    private String telefono;
+    private String email;
+    private String direccion;
 }
