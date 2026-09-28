@@ -2,6 +2,7 @@
 
     import com.citasvet.citasvet.model.Cliente;
     import com.citasvet.citasvet.repository.ClienteRepository;
+    import com.citasvet.citasvet.repository.MascotaRepository;
     import org.springframework.stereotype.Service;
 
     import java.util.List;
@@ -9,9 +10,12 @@
     @Service
     public class ClienteService {
         private final ClienteRepository clienteRepository;
+        private final MascotaRepository mascotaRepository;
 
-        public ClienteService(ClienteRepository clienteRepository) {
+
+        public ClienteService(ClienteRepository clienteRepository, MascotaRepository mascotaRepository) {
             this.clienteRepository = clienteRepository;
+            this.mascotaRepository = mascotaRepository;
         }
 
         public Cliente registrar(Cliente cliente) {
@@ -41,7 +45,12 @@
             return clienteRepository.save(existente);
         }
         public void eliminar(Long id){
+
             Cliente porBorrar = buscarPorId(id);
+            if(mascotaRepository.existsByClienteId(id)){
+                throw  new IllegalStateException("No se puede eliminar cliente con mascotas");
+
+            }
             clienteRepository.delete(porBorrar);
         }
 

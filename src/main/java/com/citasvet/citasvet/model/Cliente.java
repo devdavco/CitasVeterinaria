@@ -24,11 +24,16 @@ public class Cliente {
     private String nombre;
     @Column(nullable = false)
     private String apellido;
-
+    @Column(nullable = false, updatable = false)
     private LocalDate fechaRegistro;
     private LocalDate fechaNacimiento;
     @Column(nullable = false)
     private String telefono;
     private String email;
     private String direccion;
+
+    @PrePersist
+    void prePersist(){
+        fechaRegistro = LocalDate.now();
+    }
 }

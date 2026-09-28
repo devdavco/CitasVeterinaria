@@ -37,6 +37,14 @@ public class Mascota {
 
     private String raza;
     private LocalDate fechaNacimiento;
-
+    @Column(nullable = false, updatable = false)
+    private LocalDate fechaRegistro;
+    @Column(nullable = false)
+    private Boolean activa;
+    @PrePersist
+    void prePersist(){
+        fechaRegistro = LocalDate.now();
+        activa = true;
+    }
 
 }
