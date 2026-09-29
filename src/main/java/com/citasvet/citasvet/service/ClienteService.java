@@ -62,4 +62,8 @@ public class ClienteService {
         clienteRepository.delete(cliente);
     }
 
+    public ClienteResponse buscarPorDocumento(String documento) {
+        Cliente cliente = clienteRepository.findByDocumento(documento).orElseThrow(() -> new IllegalArgumentException("No existe el cliente con documento: " + documento));
+        return clienteMapper.toResponse(cliente);
+    }
 }

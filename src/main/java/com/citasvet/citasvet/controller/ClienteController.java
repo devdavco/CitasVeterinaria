@@ -42,4 +42,9 @@ public class ClienteController {
         return ResponseEntity.noContent().build();
 
     }
+
+    @GetMapping("/documento/{documento}")
+    public ResponseEntity<ClienteResponse> buscarPorDocumento(@PathVariable String documento){
+        return ResponseEntity.ok(clienteService.buscarPorDocumento(documento));
+    }
 }
