@@ -19,14 +19,14 @@ public class MascotaService {
 
     public Mascota registrar(Mascota mascota, Long clienteId) {
 
-        Cliente clienteMascota = clienteService.buscarPorId(clienteId);
+        Cliente clienteMascota = clienteService.buscarEntidadPorId(clienteId);
         mascota.setCliente(clienteMascota);
         return mascotaRepository.save(mascota);
 
     }
     public List<Mascota> listarMascotasCliente(Long clienteId){
 
-        clienteService.buscarPorId(clienteId);
+        clienteService.buscarEntidadPorId(clienteId);
         return mascotaRepository.findByClienteId(clienteId);
     }
 
